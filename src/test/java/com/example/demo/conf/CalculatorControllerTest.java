@@ -1,12 +1,13 @@
-package com.example.demo.endpoint.rest.controller;
+package com.example.demo.conf;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
-
+import com.example.demo.endpoint.rest.controller.CalculatorController;
 public class CalculatorControllerTest {
 
-  CalculatorController calculator = new CalculatorController();
+  private final CalculatorController calculator = new CalculatorController();
 
   @Test
   void testAdd() {
@@ -31,7 +32,9 @@ public class CalculatorControllerTest {
   @Test
   void testDivideByZero() {
     Exception exception =
-        assertThrows(IllegalArgumentException.class, () -> calculator.divide(10, 0));
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> calculator.divide(10, 0));
 
     assertEquals("Division par zéro impossible", exception.getMessage());
   }
